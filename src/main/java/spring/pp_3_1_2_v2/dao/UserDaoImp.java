@@ -1,16 +1,16 @@
-package spring.pp_3_1_2_v2.dao;
+package web.dao;
 
-import jakarta.persistence.EntityManager;
-import jakarta.persistence.PersistenceContext;
-import org.springframework.stereotype.Repository;
-import spring.pp_3_1_2_v2.model.User;
+import org.springframework.stereotype.Service;
+import web.model.User;
 
+import javax.persistence.EntityManager;
+import javax.persistence.PersistenceContext;
 import java.util.List;
-@Repository
+@Service
 public class UserDaoImp implements UserDao {
 
-    @PersistenceContext
-    private EntityManager entityManager;
+@PersistenceContext
+private EntityManager entityManager;
     @Override
     public List<User> getall() {
         return entityManager.createQuery("from User", User.class)
@@ -19,7 +19,7 @@ public class UserDaoImp implements UserDao {
 
     @Override
     public void addUser(User user) {
-        entityManager.merge(user);
+        entityManager.persist(user);
     }
 
     @Override
@@ -33,14 +33,8 @@ public class UserDaoImp implements UserDao {
     }
 
     @Override
-    public void updateUser(User user, Long id) {
-        user = getUser(id);
-        user.setName(user.getName());
-        user.setLastName(user.getLastName());
-        user.setAge(user.getAge());
-        user.setEmail(user.getEmail());
-        user.setCar(user.getCar());
-        entityManager.persist(user);
+    public void updateUser(User user) {
+        entityManager.merge(user);
     }
 
 
