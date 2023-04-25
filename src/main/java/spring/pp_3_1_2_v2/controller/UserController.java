@@ -1,12 +1,11 @@
-package spring.pp_3_1_2_v2.controller;
+package web.controller;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.*;
-import spring.pp_3_1_2_v2.model.User;
-import spring.pp_3_1_2_v2.service.UserService;
-
+import web.model.User;
+import web.service.UserService;
 
 import java.util.List;
 
@@ -19,7 +18,6 @@ private final UserService userService;
     public UserController(UserService userService) {
         this.userService = userService;
     }
-
 
     @GetMapping("/main")
     public String getUsers(Model model){
@@ -45,8 +43,8 @@ private final UserService userService;
     }
 
     @PatchMapping("/updateUser/{id}")
-    public String updateUserPost(@ModelAttribute User user,@PathVariable("id") Long id){
-        userService.updateUser(user,id);
+    public String updateUserPost(@ModelAttribute User user){
+        userService.updateUser(user);
         return "redirect:/main";
     }
 
