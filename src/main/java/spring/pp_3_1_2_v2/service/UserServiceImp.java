@@ -1,11 +1,10 @@
-package spring.pp_3_1_2_v2.service;
+package web.service;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
-import spring.pp_3_1_2_v2.dao.UserDao;
-import spring.pp_3_1_2_v2.model.User;
-
+import web.dao.UserDao;
+import web.model.User;
 
 import java.util.List;
 @Service
@@ -42,7 +41,7 @@ public class UserServiceImp implements UserService{
 
     @Override
     @Transactional
-    public void updateUser(User user, Long id) {
-        userDao.updateUser(user,id);
+    public void updateUser(User user) {
+        userDao.updateUser(user);
     }
 }

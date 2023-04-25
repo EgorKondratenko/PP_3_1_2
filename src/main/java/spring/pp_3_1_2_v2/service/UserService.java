@@ -1,7 +1,6 @@
-package spring.pp_3_1_2_v2.service;
+package web.service;
 
-
-import spring.pp_3_1_2_v2.model.User;
+import web.model.User;
 
 import java.util.List;
 
@@ -10,5 +9,5 @@ public interface UserService {
     public void addUser(User user);
     public User getUser(Long id);
     public void deleteUser(Long id);
-    public void updateUser(User user,Long id);
+    public void updateUser(User user);
 }
